@@ -100,7 +100,7 @@ module.load(filename);
 
 由于Node.js中存在4类模块（原生模块和3种文件模块），尽管require方法极其简单，但是内部的加载却是十分复杂的，其加载优先级也各自不同。
 
-
+![](http://www.infoq.com/resource/articles/nodejs-module-mechanism/zh/resources/image1.jpg)
 
 #### 从文件模块缓存中加载
 
@@ -154,7 +154,7 @@ Windows下：
 
 下图是笔者从源代码中整理出来的整个文件查找流程：
 
-
+![](http://www.infoq.com/resource/articles/nodejs-module-mechanism/zh/resources/image2.jpg)
 
 简而言之，如果require绝对路径的文件，查找时不会去遍历每一个node\_modules目录，其速度最快。其余流程如下：
 
@@ -193,13 +193,14 @@ Windows下：
   "contributors": [{
       "name": "Jackson Tian",
       "email": "mail @gmail.com"
-  	}, {
+      }, {
       "name": "fengmk2",
       "email": "mail2@gmail.com"
   }],
   ```
 
 * bugs。一个可以提交bug的URL地址。可以是邮件地址（mailto:mailxx@domain），也可以是网页地址（http:\/\/url）。
+
 * licenses。包所使用的许可证。例如：
 * ```
   "licenses": [{
@@ -209,6 +210,7 @@ Windows下：
   ```
 
 * repositories。托管源代码的地址数组。
+
 * dependencies。当前包需要的依赖。这个属性十分重要，NPM会通过这个属性，帮你自动加载依赖的包。
 
 以下是Express框架的package.json文件，值得参考。
@@ -280,7 +282,7 @@ Node.js中的require内部流程之复杂，而方法调用之简单，实在值
         }
     }).call(this);
 
-**首先，它通过function定义构建了一个闭包，将this作为上下文对象直接call调用，以避免内部变量污染到全局作用域。续而通过判断exports是否存在来决定将局部变量\_绑定给exports，并且根据define变量是否存在，作为处理在实现了AMD规范环境（**[**http:\/\/wiki.commonjs.org\/wiki\/Modules\/AsynchronousDefinition**](http://wiki.commonjs.org/wiki/Modules/AsynchronousDefinition)**）下的使用案例。仅只当处于浏览器的环境中的时候，this指向的是全局对象（window对象），才将\_变量赋在全局对象上，作为一个全局对象的方法导出，以供外部调用。**
+**首先，它通过function定义构建了一个闭包，将this作为上下文对象直接call调用，以避免内部变量污染到全局作用域。续而通过判断exports是否存在来决定将局部变量\_绑定给exports，并且根据define变量是否存在，作为处理在实现了AMD规范环境（****[http:\/\/wiki.commonjs.org\/wiki\/Modules\/AsynchronousDefinition](http://wiki.commonjs.org/wiki/Modules/AsynchronousDefinition)****）下的使用案例。仅只当处于浏览器的环境中的时候，this指向的是全局对象（window对象），才将\_变量赋在全局对象上，作为一个全局对象的方法导出，以供外部调用。**
 
 **所以在设计前后端通用的JavaScript类库时，都有着以下类似的判断：**
 
