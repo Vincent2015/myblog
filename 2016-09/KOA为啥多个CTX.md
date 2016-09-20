@@ -50,18 +50,9 @@ const Koa = require('koa');const app = new Koa();
 
 /** * Application prototype. */var app = Application.prototype;/** * Expose `Application`. */module.exports = Application;/** * Initialize a new `Application`. * * @api public */function Application() { if (!(this instanceof Application)) return new Application; this.env = process.env.NODE_ENV || 'development'; this.subdomainOffset = 2; this.middleware = []; this.proxy = false; this.context = Object.create(context); this.request = Object.create(request); this.response = Object.create(response);}
 
-
-
 2.x
-
-
-
 /** * Expose `Application` class. * Inherits from `Emitter.prototype`. */module.exports = class Application extends Emitter { /** * Initialize a new `Application`. * * @api public */ constructor() { super(); this.proxy = false; this.middleware = []; this.subdomainOffset = 2; this.env = process.env.NODE_ENV || 'development'; this.context = Object.create(context); this.request = Object.create(request); this.response = Object.create(response); }}
 
 
-
 很明显，1.x是函数，而2.x是类，需要new来实例化。
-
-
-
 整个Koa2.x里只有application做了类化，其他的还是保持之前的风格，大概还没有到必须修改的时候吧。
