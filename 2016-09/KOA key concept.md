@@ -51,4 +51,3 @@ var koa = require\('koa'\); var app = koa\(\); \/\/ x-response-time app.use\(fun
 ![](https://camo.githubusercontent.com/d80cf3b511ef4898bcde9a464de491fa15a50d06/68747470733a2f2f7261772e6769746875622e636f6d2f66656e676d6b322f6b6f612d67756964652f6d61737465722f6f6e696f6e2e706e67)
 
 译者注： 更加形象的图可以参考 Django Middleware
-
