@@ -1,3 +1,3 @@
-<img src="" width=256 height=256 />
-
-
+<div align=center>
+![](https://getkong.org/assets/images/homepage/rest-interface.png)
+</div>
