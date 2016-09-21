@@ -3,7 +3,7 @@ Sublime 插件- px 转rem
 一个CSS的px值转rem值的Sublime Text 3自动完成插件。
 
 插件效果如下：
-
+![](http://www.myexception.cn/img/2015/08/13/082237136.gif)
 
 
 安装
