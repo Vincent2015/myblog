@@ -2,6 +2,8 @@ api多了，怎么办呢？
 
 都是重复的，如日志、权限等，这时，我们需要api Gateway。
 
+![](/assets/intro-illustration.png)
+
 ![](https://getkong.org/assets/images/homepage/intro-illustration.png)
 
 ![](/assets/331F4F42-03C3-4D19-ACDC-3204862151F7.png)
