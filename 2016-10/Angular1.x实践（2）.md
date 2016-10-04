@@ -40,3 +40,25 @@
              template:'<a href="http://baidu.com">Click me to baidu</a>'    
             }
     })
+
+给指令传递数据，可以直接使用外部controller的作用域的属性。存在的问题是一旦控制器被移除或修改，我们的指令就要修改。
+
+可以如下形式，通过创建独立作用域，使用绑定策略来传递数据给指令
+<my-directive></my-directive>
+
+     angular.module('myapp',[])
+
+         .directive('my-directive',function(){
+
+         return {
+
+         restrict:'E',
+
+         template:'<a href="http://baidu.com">Click me to baidu</a>'
+
+         }
+
+     })
+
+
+
