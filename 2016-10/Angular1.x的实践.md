@@ -27,10 +27,21 @@ angualr.module('myApp',[])
     var url ="http://api.service.com";
    
     var userRequest = function(username,path){
-        retrun $http({
+        return $http({
                method:'JSONP',
                url:url+'/users/'+username+'/'+path+'?callback=JSONCallBack'
          });
       };
+    return {
+         events:function(username){return userRequest(username,'events')}
+        }
+})
+
+然后在controller中使用
+
+angualr.module('myApp',[])
+
+.controller('userController',function($scope, userService){
+    $scope.user = userService.event('auser');
 })
 
