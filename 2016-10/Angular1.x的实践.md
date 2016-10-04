@@ -65,8 +65,9 @@ Angular还有一个非常非常重要的就是自定义指令，通过自定义�
     var serverUrl ="http://api.service.com";
 
     setserverUrl:function(url){
-      if(url){=url}
+      if(url){serverUrl =url}
     }
+   
     var userRequest = function(username,path){
 
      return $http({
