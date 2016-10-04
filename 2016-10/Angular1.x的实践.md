@@ -21,12 +21,16 @@ Angular还有一个非常非常重要的就是自定义指令，通过自定义�
 先说service,这里以一个提供从后端读取数据的service为例来说明
 
 angualr.module('myApp',[])
+
 .factory('userService',function($http){
   
     var url ="http://api.service.com";
    
-    var userRequest = function(){
-
-      }
+    var userRequest = function(username,path){
+        retrun $http({
+               method:'JSONP',
+               url:url+'/users/'+username+'/'+path+'?callback=JSONCallBack'
+         });
+      };
 })
 
