@@ -1,4 +1,4 @@
-1，不推荐在controller中使用$watch
+1,不推荐在controller中使用$watch
 
 2,在视图中通过对象属性而非对象本身来进行绑定。
 
