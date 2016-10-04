@@ -17,4 +17,11 @@ $scope可以
 
 给表达式提供运行时环境
 
->
+>$rootscope是和根ng-app绑定的。
+
+为了避免污染全局，就要用到模块，修改为如下
+
+    angular.module('myapp',[])
+    .controller('myController',function($scope){
+     $scope.message ='hi guys!'
+    })
