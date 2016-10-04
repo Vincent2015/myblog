@@ -49,11 +49,28 @@
      angular.module('myapp',[])
          .directive('my-directive',function(){
          return {
-         scope:{}
+         scope:{}/*创建独立作用域*/
          restrict:'E',
          template:'<a href="http://baidu.com">Click me to baidu</a>'
         }
     })
+
+实例如下
+
+<div my-directive my-url="http://baidu.com" my-link-text="Click me to baidu">
+
+     angular.module('myapp',[])
+     .directive('my-directive',function(){
+       return{
+            restrict:'A',
+            repalce:true,
+            scope:{
+                   myUrl:@,
+                    myLinkText:@
+                  },
+             template:'<a href='{{myUrl}}'>'+'{{myLinkText}}</a>'
+            };
+      });
 
 
 
