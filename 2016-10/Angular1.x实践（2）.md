@@ -47,18 +47,13 @@
 <my-directive></my-directive>
 
      angular.module('myapp',[])
-
          .directive('my-directive',function(){
-
          return {
-
+         scope:{}
          restrict:'E',
-
          template:'<a href="http://baidu.com">Click me to baidu</a>'
-
-         }
-
-     })
+        }
+    })
 
 
 
