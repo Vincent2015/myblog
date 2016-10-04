@@ -25,3 +25,7 @@
     .controller('myController',function($scope){
      $scope.message ='hi guys!'
     })
+
+和以上几个概念都有关的还有一个概念指令directives,可以理解为自定义html元素，和属性。
+
+指令在创建时，angular也会为她创建一个作用域。这个作用域分为外部作用域和独立作用域。
