@@ -20,9 +20,9 @@ Angular还有一个非常非常重要的就是自定义指令，通过自定义�
 
 先说service,这里以一个提供从后端读取数据的service为例来说明
 
-angualr.module('myApp',[])
+    angualr.module('myApp',[])
 
-.factory('userService',function($http){
+    .factory('userService',function($http){
   
     var url ="http://api.service.com";
    
@@ -39,9 +39,55 @@ angualr.module('myApp',[])
 
 然后在controller中使用
 
-angualr.module('myApp',[])
+    angualr.module('myApp',[])
 
-.controller('userController',function($scope, userService){
-    $scope.user = userService.event('auser');
-})
+    .controller('userController',function($scope, userService){
+        $scope.user = userService.event('auser');
+    })
 
+创建服务的方法
+>factory('name',function(){})
+
+>factory('name',['$http',function($http){}])
+
+>service('name',constrctor/*构建函数*/)
+
+>constant(‘appkey’,’123123')
+
+>value('appsecritykey','hhh7711h098')
+
+>provider()
+
+重点说下provider
+
+    angualr.module('myApp',[])
+    .provider('userService',function($http){
+    var serverUrl ="http://api.service.com";
+
+    setserverUrl:function(url){
+      if(url){=url}
+    }
+    var userRequest = function(username,path){
+
+     return $http({
+
+     method:'JSONP',
+    
+     url:url+'/users/'+username+'/'+path+'?callback=JSONCallBack'
+
+         });
+
+     };
+
+     return {
+
+     events:function(username){return         userRequest(username,'events')}
+
+     }
+
+    })
+
+
+angular的一些最佳实践
+
+1，不推荐在controller中使用$watch
