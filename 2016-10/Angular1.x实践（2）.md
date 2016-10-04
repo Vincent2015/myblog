@@ -71,6 +71,4 @@
              template:'<a href='{{myUrl}}'>'+'{{myLinkText}}</a>'
             };
       });
-
-
-
+独立作用域绑定策略有3种：@，＝，&
