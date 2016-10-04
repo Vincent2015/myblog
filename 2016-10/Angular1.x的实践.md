@@ -95,6 +95,14 @@ Angular还有一个非常非常重要的就是自定义指令，通过自定义�
 
 const定义的服务常量也可以注入到config中
 
+     angualr.module('myapp',[])
+    .constant('apikey','7686111')
+    .config(function(apikey){
+    
+     })
+
+
+
 angular的一些最佳实践
 
 1，不推荐在controller中使用$watch
