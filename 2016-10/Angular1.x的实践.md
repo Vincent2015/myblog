@@ -62,29 +62,25 @@ Angular还有一个非常非常重要的就是自定义指令，通过自定义�
 
     angualr.module('myApp',[])
     .provider('userService',function($http){
-    var serverUrl ="http://api.service.com";
+     var serverUrl ="http://api.service.com";
 
-    setserverUrl:function(url){
+     setserverUrl:function(url){
       if(url){serverUrl =url}
     }
-   
-    var userRequest = function(username,path){
-
+    
+    method:'JSONP'
+    
+    $get:function($http){
+      self=this;
      return $http({
 
-     method:'JSONP',
+     method:self.method,
     
      url:url+'/users/'+username+'/'+path+'?callback=JSONCallBack'
 
          });
 
      };
-
-     return {
-
-     events:function(username){return         userRequest(username,'events')}
-
-     }
 
     })
 
