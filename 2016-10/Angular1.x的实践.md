@@ -58,7 +58,7 @@ Angular还有一个非常非常重要的就是自定义指令，通过自定义�
 
 >provider()
 
-重点说下provider
+重点说下provider,其它的方法都是provider的语法糖。
 
     angualr.module('myApp',[])
     .provider('userService',function($http){
@@ -84,7 +84,12 @@ Angular还有一个非常非常重要的就是自定义指令，通过自定义�
 
     })
 
+通过provider定义的service可以在config块中进行配置
 
+    angualr.module('myapp',[])
+    .config(function(userServiceProvidee){
+        userService.setserverUrl('http://cnode.com/v1/api');
+    })
 angular的一些最佳实践
 
 1，不推荐在controller中使用$watch
