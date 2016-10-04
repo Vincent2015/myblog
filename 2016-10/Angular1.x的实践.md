@@ -37,6 +37,8 @@ Angular还有一个非常非常重要的就是自定义指令，通过自定义�
         }
 })
 
+这里的return $http()返回的是一个promise
+
 然后在controller中使用
 
     angualr.module('myApp',[])
