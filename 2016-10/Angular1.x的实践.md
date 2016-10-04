@@ -101,8 +101,6 @@ const定义的服务常量也可以注入到config中
     
      })
 
-
-
 angular的一些最佳实践
 
 1，不推荐在controller中使用$watch
