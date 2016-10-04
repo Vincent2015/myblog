@@ -57,6 +57,7 @@ Window.eval(frame, script): This evaluates a given script in the provided frame
 Window.zoomLevel: This sets or gets the window zoom level (it might be useful when dealing with 4k displays)
 
 部分Event
+
 **capturepagedone**: This is fired when Window.capturePage() succeeds; a buffer argument is passed
 
 **devtools-opened and devtools-closed**: This is emitted when DevTools is opened or closed
