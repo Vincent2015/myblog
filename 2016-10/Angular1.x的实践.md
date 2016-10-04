@@ -93,6 +93,8 @@ Angular还有一个非常非常重要的就是自定义指令，通过自定义�
 
 采用provider定义的service，如果名称为name，那么就会有对应一个name+provider的服务提供者。
 
+const定义的服务常量也可以注入到config中
+
 angular的一些最佳实践
 
 1，不推荐在controller中使用$watch
