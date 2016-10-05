@@ -73,6 +73,19 @@
       });
 **独立作用域绑定策略有3种：@，＝，&**。
 
+&绑定，对于带参数的调用应该如下
+
+JS代码：
+    
+    .directive("direct",function(){     return{ restrict: 'ECMA', template: '<div><input ng-model="model"/></div>'+'<div><button ng-click="show({name:model})">show</button>', scope:{ show:'&'  }  } })  .controller("nameController",function($scope){ $scope.showName=function(name){   alert(name);  }  });
+
+HTML代码：
+
+<div ng-controller="nameController">  <direct show="showName(name)"></direct>   </div>
+
+这个例子中，通过模板中的ng-click触发了show函数并将一个叫做model的对象作为name参数传递了进去，而在html中，我们把show的属性值设为showName(name)。这其中的道理跟无参的例子是大同小异的。
+
+
 最后就controller与scope的概念再举例说命一下，一定要知道controller就是函数，$scope是局部作用域。
 
     var module=angular.module('myApp',[])
