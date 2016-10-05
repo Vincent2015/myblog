@@ -100,3 +100,4 @@
     function controller2($scope){ 
         $scope.sex ="女";
     }
+借用controler as可以在代码中去除对$scope的依赖。
