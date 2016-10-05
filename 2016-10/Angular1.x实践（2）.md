@@ -72,3 +72,20 @@
             };
       });
 **独立作用域绑定策略有3种：@，＝，&**。
+
+最后就controller与scope的概念再举例说命一下，一定要知道controller就是函数，$scope是局部作用域。
+var module=angular.module('myApp',[])
+
+// module.controller('mainController',function() {// // body...// this.name ="Ari";
+
+// this.hello = function(){// alert('hi');// }// });
+
+module.controller('mainController',mainController);
+
+function mainController(){ this.name ="Ari";
+
+ this.hello = function(){ alert('hi'); }}
+
+module.controller('controller2',controller2);
+
+function controller2($scope){ $scope.sex ="女";}
