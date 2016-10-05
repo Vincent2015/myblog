@@ -100,4 +100,4 @@
     function controller2($scope){ 
         $scope.sex ="女";
     }
-借用controler as可以在代码中去除对$scope的依赖。
+借用controler as可以在代码中去除对$scope的依赖，让你写出耦合性小的纯JS函数。
