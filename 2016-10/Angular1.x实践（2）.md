@@ -77,7 +77,16 @@
 
 JS代码：
     
-    .directive("direct",function(){     return{ restrict: 'ECMA', template: '<div><input ng-model="model"/></div>'+'<div><button ng-click="show({name:model})">show</button>', scope:{ show:'&'  }  } })  .controller("nameController",function($scope){ $scope.showName=function(name){   alert(name);  }  });
+.directive("direct",function()
+            { 
+              return{
+                 restrict: 'ECMA', 
+                 template: '<div><input ng-model="model"/></div>'+'<div><button ng-click="show({name:model})">show</button>',
+                 scope:{ show:'&'  }  } })  .controller("nameController",function($scope){ 
+    $scope.showName=function(name){
+               alert(name);  
+        }  
+});
 
 HTML代码：
 
