@@ -101,3 +101,30 @@
         $scope.sex ="女";
     }
 借用controler as可以在代码中去除对$scope的依赖，让你写出耦合性小的纯JS函数。
+
+** 可以规定对于controller as的写法如下：[链接](http://www.cnblogs.com/whitewolf/p/3493362.html)
+
+    angular.module("app",[])
+     .controller("demoController",[function(){
+         var vm = this;
+         vm.title = "angualr";
+        return vm; 
+    }])
+
+
+
+其优势为：
+
+1,定义vm这样会让我们更好的避免JavaScript的this的坑。
+
+2,如果某个版本的angular不再支持controller as,可以轻易的注入$scope,修改为 var vm = $scope;
+
+3,因为不再注入$scope了，controller更加的POJO，就是一个很普通的JavaScript对象。
+
+4,也因为没有了$scope，而controller实例将会成为scope上的一个属性，所以在controller中我们再也不能使用$watch,$emit,$on之类的特殊方法，因为这些东西往往不该出现在controller中的，给大家一个警告，更好的控制。但是一旦如果没办法必须用的话，可以在征得项目组一致同意，将此controller退回$scope.
+
+5,因为controller实例将会只是$scope的一个属性，所以view模板上的所有字段都会在一个引用的属性上，这可以避开JavaScript原型链继承对于值类型的坑。参加https://github.com/angular/angular.js/wiki/Understanding-Scopes.
+
+6,controller as 对于 coffescript,liveScript更友好。 
+
+7.模板上定义的每个字段方法都会在scope寄存在controller as别名上的引用上，所以在controller继承中，不会在出现命名冲突的问题。
