@@ -10,7 +10,7 @@ Angularjs中一般开发人员接触最多的就是Module,controller,$scope, dir
 
 1，项目的业务逻辑代码，都在控制器中；控制器写rest请求去后端读取数据，然后直接放scope中。导致很多冗余的代码，并导致一些控制器特别大，最大的文件达近60k。
 
-2.视图层面完全是ng-bind/ng-src/ng-bind-html等等。
+2.视图层面完全是ng-bind\/ng-src\/ng-bind-html等等。
 
 不是说这样的好与不好，一个DEMO或者原型，使用这样的开发是可以的。但是一个正式的项目，这样做，无法扩展，无法维护。随着项目业务和逻辑的增加，这样的项目肯定最后垮掉。
 
@@ -20,89 +20,104 @@ Angular还有一个非常非常重要的就是自定义指令，通过自定义�
 
 先说service,这里以一个提供从后端读取数据的service为例来说明
 
-    angualr.module('myApp',[])
+```
+angualr.module('myApp',[])
 
-    .factory('userService',function($http){
-  
-    var url ="http://api.service.com";
-   
-    var userRequest = function(username,path){
-        return $http({
-               method:'JSONP',
-               url:url+'/users/'+username+'/'+path+'?callback=JSONCallBack'
-         });
-      };
-    return {
-         events:function(username){return userRequest(username,'events')}
-        }
-})
+.factory('userService',function($http){
 
-这里的return $http()返回的是一个promise,可以在controller通过then和 fail去解析处理
+var url ="http://api.service.com";
+
+var userRequest = function(username,path){
+    return $http({
+           method:'JSONP',
+           url:url+'/users/'+username+'/'+path+'?callback=JSONCallBack'
+     });
+  };
+return {
+     events:function(username){return userRequest(username,'events')}
+    }
+```
+
+}\)
+
+这里的return $http\(\)返回的是一个promise,可以在controller通过then和 fail去解析处理
 
 然后在controller中使用
 
-    angualr.module('myApp',[])
+```
+angualr.module('myApp',[])
 
-    .controller('userController',function($scope, userService){
-        $scope.user = userService.event('auser');
-    })
+.controller('userController',function($scope, userService){
+    $scope.user = userService.event('auser');
+})
+```
 
 创建服务的方法
->factory('name',function(){})
 
->factory('name',['$http',function($http){}])
-
->service('name',constrctor/*构建函数*/)
-
->constant(‘appkey’,’123123')
-
->value('appsecritykey','hhh7711h098')
-
->provider()
+> factory\('name',function\(\){}\)
+> 
+> factory\('name',\['$http',function\($http\){}\]\)
+> 
+> service\('name',constrctor\/_构建函数_\/\)
+> 
+> constant\(‘appkey’,’123123'\)
+> 
+> value\('appsecritykey','hhh7711h098'\)
+> 
+> provider\(\)
 
 重点说下provider,其它的方法都是provider的语法糖。
 
-    angualr.module('myApp',[])
-    .provider('userService',function($http){
-     var serverUrl ="http://api.service.com";
+```
+angualr.module('myApp',[])
+.provider('userService',function($http){
+ var serverUrl ="http://api.service.com";
 
-     setserverUrl:function(url){
-      if(url){serverUrl =url}
-    }
-    
-    method:'JSONP'
-    
-    $get:function($http){
-      self=this;
-     return $http({
+ setserverUrl:function(url){
+  if(url){serverUrl =url}
+}
 
-     method:self.method,
-    
-     url:url+'/users/'+username+'/'+path+'?callback=JSONCallBack'
+method:'JSONP'
 
-         });
+$get:function($http){
+  self=this;
+ return $http({
 
-     };
+ method:self.method,
 
-    })
+ url:url+'/users/'+username+'/'+path+'?callback=JSONCallBack'
+
+     });
+
+ };
+
+})
+```
 
 通过provider定义的service可以在config块中进行配置
 
-    angualr.module('myapp',[])
-    .config(function(userServiceProvidee){
-        userService.setserverUrl('http://cnode.com/v1/api');
-    })
+```
+angualr.module('myapp',[])
+.config(function(userServiceProvidee){
+    userService.setserverUrl('http://cnode.com/v1/api');
+})
+```
 
 采用provider定义的service，如果名称为name，那么就会有对应一个name+provider的服务提供者。
 
 const定义的服务常量也可以注入到config中
 
-     angualr.module('myapp',[])
-    .constant('apikey','7686111')
-    .config(function(apikey){
-    
-     })
+```
+ angualr.module('myapp',[])
+.constant('apikey','7686111')
+.config(function(apikey){
+
+ })
+```
+
+因为控制器是在需要时实例化，不需要时就会销毁，这样意味着当路由切换或重载视图时，当前的控制器就会销毁，那么基于控制器的管理数据，就不能满足需要保持运行中数据的要求，这时候处于性能和和内存占用的需求，service就上场了。
 
 angular的一些实战建议收集
 
 1，不推荐在controller中使用$watch
+
