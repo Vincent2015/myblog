@@ -70,18 +70,18 @@ run相当于传统的main方法，有一个参数(initializeFn)在angular创建�
 
 还有一个特殊性的指令 **ngModel**，可以提供底层的API来处理控制器内的数据，当我们在指令中require 'ngmodel',可以访问一个特殊的API，用以做数据绑定，校验，css更新等。一个自定义验证的例子
 
-angular.moule('app',[])
-.directive('unique',function(
-  return {
+    angular.moule('app',[])
+    .directive('unique',function(
+      return {
        require:'ngModel',
        link:function(scope,ele,attr,controller){
           scope.watch(attr.ngModel,function(){
-                 // 验证属性
-                  // controller.$setValidity('unique',true);            
+               // 验证属性
+              // controller.$setValidity('unique',true);            
             })
+          }
         }
-    }
-))
+    ))
 
 
 
