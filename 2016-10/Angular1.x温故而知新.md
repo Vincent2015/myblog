@@ -65,3 +65,24 @@ run相当于传统的main方法，有一个参数(initializeFn)在angular创建�
             } 
     } })
 也就说指令中需要暴露给外部（如其它指令）的方法和数据可以放在指令的controller中定义。link主要是给指令内部的操作使用的。
+
+**指令的compile函数**主要是希望指令和数据放到DOM之前的操作，此时对于DOM的增删是安全的 。
+
+还有一个特殊性的指令 **ngModel**，可以提供底层的API来处理控制器内的数据，当我们在指令中require 'ngmodel',可以访问一个特殊的API，用以做数据绑定，校验，css更新等。一个自定义验证的例子
+
+angular.moule('app',[])
+.directive('unique',function(
+  return {
+       require:'ngModel',
+       link:function(scope,ele,attr,controller){
+          scope.watch(attr.ngModel,function(){
+                 // 验证属性
+                  // controller.$setValidity('unique',true);            
+            })
+        }
+    }
+))
+
+
+
+
