@@ -39,7 +39,7 @@
 
 run相当于传统的main方法，有一个参数(initializeFn)在angular创建完注入器后执行。
 
-说说指令中的require的作用
+说说指令中的require的作用，require的的参数为数组或者字符串，字符串代表一个指令的名字，require会将（a指令）控制器注入到新指令中，并作为新指令的链接函数的第四个参数。
 // <div a b></div> 
 
     ui.directive('a', function(){ 
