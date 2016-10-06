@@ -73,8 +73,8 @@ run相当于传统的main方法，有一个参数(initializeFn)在angular创建�
     angular.moule('app',[])
     .directive('unique',function(
       return {
-       require:'ngModel',
-       link:function(scope,ele,attr,controller){
+      require:'ngModel',
+      link:function(scope,ele,attr,controller){
           scope.watch(attr.ngModel,function(){
                // 验证属性
               // controller.$setValidity('unique',true);            
@@ -82,7 +82,5 @@ run相当于传统的main方法，有一个参数(initializeFn)在angular创建�
           }
         }
     ))
-
-
 
 
