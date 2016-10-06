@@ -33,6 +33,9 @@
 
 再说运行块
 
-angular.module('myapp',[])
-    
+    angular.module('myapp',[])
+    .run(function($rootScope){
+    })
+
+run相当于传统的main方法，有一个参数(initializeFn)在angular创建完注入器后执行。
 
