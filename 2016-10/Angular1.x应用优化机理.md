@@ -46,5 +46,5 @@ $apply()函数可以从angular框架的外部让表达式在angular的上下文�
         }
     })
 
-
+datePicker插件暴露了一个onSelect事件，为了在angular 拿到选择的值，使用$apply()处理回调。
 
