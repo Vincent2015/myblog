@@ -62,3 +62,4 @@ run相当于传统的main方法，有一个参数(initializeFn)在angular创建�
                     aController.data = { ... } 
             } 
     } })
+也就说指令中需要暴露给外部（如其它指令）的方法和数据可以放在指令的controller中定义。link主要是给指令内部的操作使用的。
