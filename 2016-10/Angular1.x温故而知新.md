@@ -39,3 +39,26 @@
 
 run相当于传统的main方法，有一个参数(initializeFn)在angular创建完注入器后执行。
 
+说说指令中的require的作用
+// <div a b></div> 
+
+    ui.directive('a', function(){ 
+        return {
+         controller: function(){ 
+                this.data = {} 
+                this.changeData = function( ... ) {
+                  ... } }, 
+            link: ($scope, $element, $attributes, controller) {
+             controller.data = { ... } 
+        } 
+   } }) 
+
+    myApp.directive('b', function(){
+         return { 
+             require: 'a', 
+              link: ($scope, $element, $attributes, aController)
+             {
+                    aController.changeData() 
+                    aController.data = { ... } 
+            } 
+    } })
