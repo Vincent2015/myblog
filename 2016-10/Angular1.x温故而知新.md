@@ -31,3 +31,7 @@
      })
 可见所有的东西，都是通过提供者provider来提供的。
 
+再说运行块
+
+     angular.module('myapp',[])
+
