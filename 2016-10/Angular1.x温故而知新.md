@@ -19,11 +19,11 @@
 
     angular.module('myapp',[])
      .factory('myservice',function(){
-     var service ={};
-     return service;
+         var service ={};
+         return service;
      })
      .directive('mydirective',function(){
-     return {
-     template:'<a>baidu.com</a>'
-     }
+         return {
+         template:'<a>baidu.com</a>'
+         }
      })
